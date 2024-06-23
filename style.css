@@ -1,23 +1,71 @@
 body {
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
 }
 
 #game-container {
     text-align: center;
 }
 
-#puzzleCanvas {
-    border: 2px solid #000;
+#word {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-#shuffleButton {
-    margin-top: 10px;
+#wrong-letters {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #f00;
+}
+
+#notification-container {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#figure-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.figure-part {
+    width: 10px;
+    height: 50px;
+    background-color: #333;
+    margin: 0 5px;
+    display: none;
+}
+
+#keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#keyboard button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#play-again-button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1rem;
+    cursor: pointer;
 }
