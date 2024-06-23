@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container">
+    <div class="game-container">
         <h1>Hangman Game</h1>
         <div id="word"></div>
-        <div id="message"></div>
-        <div id="wrong-letters"></div>
-        <div id="notification-container"></div>
-        <div id="figure-container">
-            <div class="figure-part" id="head"></div>
-            <div class="figure-part" id="body"></div>
-            <div class="figure-part" id="left-arm"></div>
-            <div class="figure-part" id="right-arm"></div>
-            <div class="figure-part" id="left-leg"></div>
-            <div class="figure-part" id="right-leg"></div>
+        <div class="wrong-letters-container">
+            <p>Wrong letters:</p>
+            <span id="wrong-letters"></span>
         </div>
-        <div id="keyboard">
-            <!-- Keyboard buttons will be generated here by JavaScript -->
+        <div id="notification-container" class="notification-container">
+            <p>You have already entered this letter</p>
         </div>
-        <button id="play-again-button" style="display:none;">Play Again</button>
+        <div class="popup-container" id="popup-container">
+            <div class="popup">
+                <h2 id="final-message"></h2>
+                <button id="play-button">Play Again</button>
+            </div>
+        </div>
+        <canvas id="hangman" width="200" height="200"></canvas>
+        <div id="keyboard"></div>
     </div>
     <script src="script.js"></script>
 </body>
