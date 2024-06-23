@@ -7,21 +7,23 @@ const tileSize = canvas.width / size;
 let tiles = [];
 let emptyTile = { x: size - 1, y: size - 1 };
 
+// Initialize the tiles array
 function initTiles() {
     tiles = [];
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            tiles.push({ x: i, y: j, number: i * size + j + 1 });
+    for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+            tiles.push({ x: x, y: y, number: y * size + x + 1 });
         }
     }
-    tiles[size * size - 1].number = 0;
+    tiles[size * size - 1].number = 0; // Set the last tile as the empty space
     emptyTile = { x: size - 1, y: size - 1 };
 }
 
+// Draw the tiles on the canvas
 function drawTiles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     tiles.forEach(tile => {
-        if (tile.number === 0) return;
+        if (tile.number === 0) return; // Skip drawing the empty space
         ctx.fillStyle = '#000';
         ctx.fillRect(tile.x * tileSize, tile.y * tileSize, tileSize, tileSize);
         ctx.fillStyle = '#fff';
@@ -32,6 +34,7 @@ function drawTiles() {
     });
 }
 
+// Shuffle the tiles by moving the empty space randomly
 function shuffleTiles() {
     for (let i = 0; i < 1000; i++) {
         const neighbors = getNeighbors(emptyTile);
@@ -40,16 +43,18 @@ function shuffleTiles() {
     }
 }
 
+// Get the neighboring tiles of the empty space
 function getNeighbors(tile) {
     const { x, y } = tile;
     const neighbors = [];
-    if (x > 0) neighbors.push({ x: x - 1, y });
-    if (x < size - 1) neighbors.push({ x: x + 1, y });
-    if (y > 0) neighbors.push({ x, y: y - 1 });
-    if (y < size - 1) neighbors.push({ x, y: y + 1 });
+    if (x > 0) neighbors.push({ x: x - 1, y: y });
+    if (x < size - 1) neighbors.push({ x: x + 1, y: y });
+    if (y > 0) neighbors.push({ x: x, y: y - 1 });
+    if (y < size - 1) neighbors.push({ x: x, y: y + 1 });
     return neighbors;
 }
 
+// Move a tile to the empty space
 function moveTile(tile) {
     const tileIndex = tiles.findIndex(t => t.x === tile.x && t.y === tile.y);
     const emptyIndex = tiles.findIndex(t => t.number === 0);
@@ -60,6 +65,7 @@ function moveTile(tile) {
     emptyTile = { x: tile.x, y: tile.y };
 }
 
+// Handle tile click event
 canvas.addEventListener('click', e => {
     const rect = canvas.getBoundingClientRect();
     const x = Math.floor((e.clientX - rect.left) / tileSize);
@@ -72,10 +78,12 @@ canvas.addEventListener('click', e => {
     }
 });
 
+// Handle shuffle button click event
 shuffleButton.addEventListener('click', () => {
     shuffleTiles();
     drawTiles();
 });
 
+// Initialize and draw the puzzle on page load
 initTiles();
 drawTiles();
