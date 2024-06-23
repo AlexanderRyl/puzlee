@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#puzzleCanvas {
+    border: 2px solid #000;
+}
+
+#shuffleButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
