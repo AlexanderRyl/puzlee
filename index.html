@@ -3,15 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle Game</title>
+    <title>Hangman Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
-        <h1>Sliding Puzzle Game</h1>
-        <p>Click on a tile adjacent to the empty space to move it. The goal is to arrange the tiles in numerical order.</p>
-        <canvas id="puzzleCanvas" width="400" height="400"></canvas>
-        <button id="shuffleButton">Shuffle</button>
+        <h1>Hangman Game</h1>
+        <div id="word"></div>
+        <div id="message"></div>
+        <div id="wrong-letters"></div>
+        <div id="notification-container"></div>
+        <div id="figure-container">
+            <div class="figure-part" id="head"></div>
+            <div class="figure-part" id="body"></div>
+            <div class="figure-part" id="left-arm"></div>
+            <div class="figure-part" id="right-arm"></div>
+            <div class="figure-part" id="left-leg"></div>
+            <div class="figure-part" id="right-leg"></div>
+        </div>
+        <div id="keyboard">
+            <!-- Keyboard buttons will be generated here by JavaScript -->
+        </div>
+        <button id="play-again-button" style="display:none;">Play Again</button>
     </div>
     <script src="script.js"></script>
 </body>
